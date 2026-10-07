@@ -1,12 +1,75 @@
-<form class="max-w-sm mx-auto mt-24">
-  <div class="mb-6">
-    <label for="success" class="block mb-2.5 text-sm font-medium text-fg-success-strong">Your name</label>
-    <input type="text" id="success" class="bg-success-soft border border-success-subtle text-fg-success-strong text-sm rounded-base focus:ring-success focus:border-success block w-full px-3 py-2.5 shadow-xs placeholder:text-fg-success-strong" placeholder="Success input">
-    <p class="mt-2.5 text-sm text-fg-success-strong"><span class="font-medium">Well done!</span> Some success message.</p>
-  </div>
-  <div class="mb-6">
-    <label for="danger" class="block mb-2.5 text-sm font-medium text-fg-danger-strong">Your name</label>
-    <input type="text" id="danger" class="bg-danger-soft border border-danger-subtle text-fg-danger-strong text-sm rounded-base focus:ring-danger focus:border-danger block w-full px-3 py-2.5 shadow-xs placeholder:text-fg-danger-strong" placeholder="Error input">
-    <p class="mt-2.5 text-sm text-fg-danger-strong"><span class="font-medium">Oh, snapp!</span> Some error message.</p>
-  </div>
-</form>
+<div class="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow">
+  <h1 class="text-3xl font-bold text-gray-900 mb-6">
+    Lista Alumnos
+  </h1>
+
+  <form [formGroup]="formulario" (ngSubmit)="muestraAlumnos()">
+
+    <div class="mb-5">
+      <label for="matricula" class="block mb-2 text-sm font-medium text-gray-900">
+        |Matricula
+      </label>
+      <input 
+        type="text" 
+        id="matricula" 
+        formControlName="matricula"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full block w-full p-2.5 px-4 focus:ring-blue-500 focus:border-blue-500" 
+        placeholder="Matricula"
+      >
+    </div>
+
+    <div class="mb-5">
+      <label for="nombre" class="block mb-2 text-sm font-medium text-gray-900">
+        |Nombre
+      </label>
+      <input 
+        type="text" 
+        id="nombre" 
+        formControlName="nombre"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full block w-full p-2.5 px-4 focus:ring-blue-500 focus:border-blue-500" 
+        placeholder="Nombre Completo"
+      >
+    </div>
+
+    <div class="mb-5">
+      <label for="correo" class="block mb-2 text-sm font-medium text-gray-900">
+        |Correo
+      </label>
+      <input 
+        type="email" 
+        id="correo" 
+        formControlName="correo"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full block w-full p-2.5 px-4 focus:ring-blue-500 focus:border-blue-500" 
+        placeholder="Correo Electronico"
+      >
+    </div>
+
+    <div class="mb-5">
+      <label for="materia" class="block mb-2 text-sm font-medium text-gray-900">
+        |Materia
+      </label>
+      <input 
+        type="text" 
+        id="materia" 
+        formControlName="materia"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full block w-full p-2.5 px-4 focus:ring-blue-500 focus:border-blue-500" 
+        placeholder="Materia"
+      >
+    </div>
+
+    <div class="flex justify-center mt-6">
+      <button 
+        type="submit" 
+        class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-8 py-2.5 text-center"
+      >
+        Registrar
+      </button>
+    </div>
+
+  </form>
+
+  <h3>|Matricula: {{alumno.matricula}}</h3>
+  <h3>|Nombre: {{alumno.nombre}}</h3>
+  <h3>|Correo: {{alumno.correo}}</h3>
+  <h3>|Materia: {{alumno.materia}}</h3>
+</div>
