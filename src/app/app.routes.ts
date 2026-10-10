@@ -11,14 +11,11 @@ export const routes: Routes = [
                         (c)=>c.Usuarios
                     ),
             },
-            {
-                path:'zodiaco',
-                loadComponent:()=>
-                    import('./formularios/zodiaco/zodiaco').then(
-                        (c)=>c.Zodiaco
-                    ),
-            },
-        ]
+           {
+                path: 'zodiaco',
+                 loadComponent: () => import('./formularios/zodiaco/zodiaco').then(c => c.ZodiacoComponent)
+            }
+            ]
     },
     {
         path: 'escuela',
