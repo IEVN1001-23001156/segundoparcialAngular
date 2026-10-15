@@ -1,0 +1,137 @@
+<body>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+<div class="max-w-6xl mx-auto mt-8 p-6 bg-white border border-gray-200 rounded-lg shadow">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold text-gray-900">
+      Registros del zodiaco
+    </h2>
+    <button 
+      type="button" 
+      (click)="regresar()"
+      class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-6 py-2.5 text-center"
+    >
+      Nuevo Registro
+    </button>
+  </div>
+
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg mb-8">
+    <table class="w-full text-sm text-left text-gray-500">
+      <thead class="text-xs text-gray-700 bg-gray-100 uppercase">
+        <tr>
+          <th scope="col" class="px-6 py-3">Nombre Completo</th>
+          <th scope="col" class="px-6 py-3">Edad</th>
+          <th scope="col" class="px-6 py-3">Signo</th>
+          <th scope="col" class="px-6 py-3">Sexo</th>
+          <th scope="col" class="px-6 py-3">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of personas; let i = index" class="bg-white border-b border-gray-200 hover:bg-gray-50">
+          <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+            {{ p.nombre }} {{ p.apaterno }} {{ p.amaterno }}
+          </td>
+          <td class="px-6 py-4">
+            {{ p.edad }} años
+          </td>
+          <td class="px-6 py-4 capitalize font-semibold text-gray-900">
+            {{ p.signo }}
+          </td>
+          <td class="px-6 py-4 capitalize font-semibold text-gray-900">
+            {{ p.sexo }}
+          </td>
+          <td class="px-6 py-4">
+            <div class="flex gap-2">
+              <button
+                type="button"
+                class="px-4 py-2 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 focus:ring-4 focus:outline-none focus:ring-green-300"
+                (click)="editarPersona(i)"
+              >
+                Editar
+              </button>
+
+              <button
+                type="button"
+                class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300"
+                (click)="eliminarPersona(i)"
+              >
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="personas.length === 0" class="p-4 mb-6 text-sm text-gray-800 rounded-lg bg-gray-100" role="alert">
+    <span class="font-medium">Información:</span> No hay registros guardados.
+  </div>
+
+  <div *ngIf="indiceEdicion !== -1" class="p-6 bg-gray-50 border border-gray-200 rounded-lg shadow-inner">
+    <h3 class="text-xl font-bold text-gray-900 mb-4">Editar Registro</h3>
+    
+    <form [formGroup]="formulario" (ngSubmit)="guardarEdicion()">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-1">Nombre:</label>
+          <input type="text" formControlName="nombre" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-1">Edad:</label>
+          <input type="number" formControlName="edad" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-1">Signo:</label>
+          <input type="text" formControlName="signo" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5">
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label class="block mb-2 text-sm font-medium text-gray-900">
+          Sexo:
+        </label>
+        <div class="flex gap-6 pl-2">
+          <div class="flex items-center">
+            <input 
+              id="edit-sexo-masculino" 
+              type="radio" 
+              value="Masculino" 
+              formControlName="sexo" 
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+            >
+            <label for="edit-sexo-masculino" class="ms-2 text-sm font-medium text-gray-900">
+              Masculino
+            </label>
+          </div>
+          <div class="flex items-center">
+            <input 
+              id="edit-sexo-femenino" 
+              type="radio" 
+              value="Femenino" 
+              formControlName="sexo" 
+              class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+            >
+            <label for="edit-sexo-femenino" class="ms-2 text-sm font-medium text-gray-900">
+              Femenino
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="submit" class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5">
+          Guardar Cambios
+        </button>
+        <button type="button" (click)="limpiar()" class="text-gray-900 bg-gray-200 hover:bg-gray-300 font-medium rounded-lg text-sm px-5 py-2.5">
+          Cancelar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>

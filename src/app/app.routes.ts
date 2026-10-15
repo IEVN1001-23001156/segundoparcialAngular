@@ -13,8 +13,12 @@ export const routes: Routes = [
             },
            {
                 path: 'zodiaco',
-                 loadComponent: () => import('./formularios/zodiaco/zodiaco').then(c => c.ZodiacoComponent)
-            }
+                loadComponent: () => import('./formularios/zodiaco/zodiaco').then(c => c.ZodiacoComponent)
+           },
+           {
+                path: 'zodiaco-lista',
+                loadComponent: () => import('./formularios/zodiaco-lista/zodiaco-lista').then(c => c.ZodiacoListaComponent)
+           }
             ]
     },
     {
@@ -30,9 +34,9 @@ export const routes: Routes = [
         ]
     },
     {
-        path:'', redirectTo: 'admin', pathMatch:'full'
+        path:'', redirectTo: 'formularios/zodiaco', pathMatch:'full'
     },
     {
-        path:'**', redirectTo: 'admin'
+        path:'**', redirectTo: 'formularios/zodiaco'
     },
 ];

@@ -2,7 +2,18 @@
   <br>
   <br>
   <br>
+
 <div class="max-w-5xl mx-auto my-8 p-6 bg-white border border-gray-200 rounded-lg shadow">
+<div class="flex justify-end mb-4">
+  <button 
+    type="button" 
+    (click)="verRegistros()"
+    class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-full text-sm px-6 py-2 text-center"
+  >
+    Ver Registros
+  </button>
+</div>
+
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
     
     <div class="pr-0 md:pr-6 border-b md:border-b-0 md:border-r border-gray-300 pb-6 md:pb-0">
@@ -10,11 +21,11 @@
         Datos Personales Zodiaco
       </h3>
 
-      <form [formGroup]="formulario" (ngSubmit)="imprimir()">
+      <form [formGroup]="formulario">
         
         <div class="mb-4 flex items-center gap-3">
           <label for="nombre" class="w-28 text-sm font-medium text-gray-900">
-            |Nombre:
+            Nombre:
           </label>
           <input 
             type="text" 
@@ -27,7 +38,7 @@
 
         <div class="mb-4 flex items-center gap-3">
           <label for="apaterno" class="w-28 text-sm font-medium text-gray-900">
-            |Apellido Paterno:
+            Apellido Paterno:
           </label>
           <input 
             type="text" 
@@ -40,7 +51,7 @@
 
         <div class="mb-4 flex items-center gap-3">
           <label for="amaterno" class="w-28 text-sm font-medium text-gray-900">
-           |Apellido Materno: 
+            Apellido Materno: 
           </label>
           <input 
             type="text" 
@@ -53,7 +64,7 @@
 
         <div class="mb-4 mt-6">
           <label class="block text-sm font-medium text-center text-gray-900 mb-2">
-            |Fecha de nacimiento:
+            Fecha de nacimiento:
           </label>
           <div class="grid grid-cols-3 gap-3 text-center">
             <div>
@@ -121,12 +132,21 @@
           </div>
         </div>
 
-        <div class="mt-6">
+        <div class="flex justify-center gap-4 mt-6">
           <button 
-            type="submit" 
-            class="w-full text-gray-900 bg-white border-2 border-gray-900 hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-300 font-bold rounded-lg text-sm px-5 py-2.5 text-center"
+            type="button" 
+            (click)="calcular()"
+            class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm px-8 py-2.5 text-center"
           >
-            imprimir
+            Calcular
+          </button>
+
+          <button 
+            type="button" 
+            (click)="agregarPersona()"
+            class="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-full text-sm px-8 py-2.5 text-center"
+          >
+            Registrar
           </button>
         </div>
       </form>
@@ -141,6 +161,10 @@
         <p class="text-xl text-gray-900 mb-4">
           Tienes <span class="font-bold">{{ persona.edad }}</span> años
         </p>
+        
+        <p class="text-xl text-gray-900 mb-4">
+          Tu sexo es <span class="font-bold">{{ persona.sexo }}</span>
+        </p>
 
         <p class="text-xl text-gray-900 mb-4">
           tu signo zodiacal
@@ -150,7 +174,7 @@
           <span class="text-2xl text-gray-900">
             Es <span class="font-semibold capitalize">{{ persona.signo }}</span>
           </span>
-          <div class="w-20 h- flex items-center justify-center p-2 shadow-md">
+          <div class="w-20 h-20 flex items-center justify-center p-2 shadow-md">
             <img 
               [src]="persona.imagen" 
               [alt]="persona.signo" 
@@ -162,11 +186,12 @@
 
       <ng-template #vacio>
         <p class="text-gray-400 italic">
-          Completa los datos
+          Completa los datos 
         </p>
       </ng-template>
     </div>
 
   </div>
 </div>
+
 </body>
